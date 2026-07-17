@@ -363,3 +363,254 @@ h6,
 .theme-light .workspace-tab-header-status-icon::after {
   background: rgba(0, 0, 0, 0.35);
 }
+
+/*
+ * ═══════════════════════════════════════════════════════════
+ *   P O L L E N  —  Style Settings Snippet
+ * ═══════════════════════════════════════════════════════════
+ *   Requires the "Style Settings" community plugin.
+ *   Enable this snippet in Settings → Appearance → CSS snippets.
+ *   Then open Settings → Style Settings → Pollen to customize.
+ * ═══════════════════════════════════════════════════════════
+ */
+
+
+/* @settings
+name: Pollen
+id: pollen-style-settings
+settings:
+
+  -
+    id: pollen-heading-section
+    title: Headings
+    type: heading
+    level: 2
+    collapsed: false
+
+  -
+    id: pollen-heading-color
+    title: Heading color
+    description: Color for all heading levels (H1–H6) and inline titles
+    type: variable-color
+    format: hsl
+    default: 'hsla(178, 12%, 63%, 0.75)'
+
+  -
+    id: pollen-heading-font
+    title: Heading font family
+    description: "Font stack for headings. Use quotes around font names with spaces."
+    type: variable-text
+    default: '"Fira Code", "Consolas", "Courier New", monospace'
+
+  -
+    id: pollen-heading-size-offset
+    title: Heading font size offset (px)
+    description: Added to 1em. Negative values make headings smaller than body text.
+    type: variable-number-slider
+    default: -1
+    min: -6
+    max: 6
+    step: 1
+    format: px
+
+  -
+    id: pollen-typography-section
+    title: Typography
+    type: heading
+    level: 2
+    collapsed: true
+
+  -
+    id: pollen-text-font
+    title: Body text font
+    description: "Primary font for reading/writing. Pollen embeds Gentium Plus."
+    type: variable-text
+    default: '"Gentium Plus", "Brill", "Georgia", serif'
+
+  -
+    id: pollen-interface-font
+    title: Interface font
+    description: "Font for sidebar, tabs, menus."
+    type: variable-text
+    default: '"Gentium Plus", "Brill", "Calibri", sans-serif'
+
+  -
+    id: pollen-mono-font
+    title: Monospace font
+    description: "Font for code blocks. Pollen embeds Fira Code."
+    type: variable-text
+    default: '"Fira Code", "Consolas", "Courier New", monospace'
+
+  -
+    id: pollen-surface-section
+    title: Dark Surface & Borders
+    type: heading
+    level: 2
+    collapsed: true
+
+  -
+    id: pollen-bg
+    title: Background color
+    description: Unified dark background for canvas, tabs, sidebar
+    type: variable-color
+    format: hex
+    default: '#141414'
+
+  -
+    id: pollen-border-opacity
+    title: Border opacity
+    description: Opacity of dividers and borders (0–1)
+    type: variable-number-slider
+    default: 0.067
+    min: 0
+    max: 0.25
+    step: 0.005
+    format: ""
+
+  -
+    id: pollen-guides-section
+    title: File Explorer Guides
+    type: heading
+    level: 2
+    collapsed: true
+
+  -
+    id: pollen-guide-dash
+    title: Guide dash length (px)
+    description: Length of each visible dash segment in the indent guide
+    type: variable-number-slider
+    default: 20
+    min: 5
+    max: 40
+    step: 1
+    format: px
+
+  -
+    id: pollen-guide-gap
+    title: Guide gap length (px)
+    description: Length of the invisible gap between dashes
+    type: variable-number-slider
+    default: 10
+    min: 2
+    max: 30
+    step: 1
+    format: px
+
+  -
+    id: pollen-tabs-section
+    title: Tabs & Navigation
+    type: heading
+    level: 2
+    collapsed: true
+
+  -
+    id: pollen-close-scale
+    title: Tab close "X" scale
+    description: Scale factor for the close button (1.0 = default, 0.88 = 12% smaller)
+    type: variable-number-slider
+    default: 0.88
+    min: 0.5
+    max: 1.2
+    step: 0.02
+    format: ""
+
+  -
+    id: pollen-hide-pin-square
+    title: Hide pinned tab square icon
+    description: Toggle off the custom square pin indicator
+    type: class-toggle
+    default: false
+
+*/
+
+
+/* ════════════════════════════════════════════════════════════
+   DEFAULT VARIABLE VALUES
+   ════════════════════════════════════════════════════════════
+   Style Settings overrides these via inline styles on <body>.
+   We set the defaults here so the theme works without the plugin.
+*/
+
+body {
+  /* Typography */
+  --pollen-text-font:            "Gentium Plus", "Brill", "Georgia", serif;
+  --pollen-interface-font:       "Gentium Plus", "Brill", "Calibri", sans-serif;
+  --pollen-mono-font:            "Fira Code", "Consolas", "Courier New", monospace;
+
+  /* Headings */
+  --pollen-heading-color:        hsla(178, 12%, 63%, 0.75);
+  --pollen-heading-font:         "Fira Code", "Consolas", "Courier New", monospace;
+  --pollen-heading-size-offset:  -1px;
+
+  /* Surface (dark theme) */
+  --pollen-bg:                   #141414;
+  --pollen-border-opacity:       0.067;
+
+  /* Guides */
+  --pollen-guide-dash:           20px;
+  --pollen-guide-gap:            10px;
+
+  /* Tabs */
+  --pollen-close-scale:          0.88;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   APPLY FONT VARIABLES
+   ════════════════════════════════════════════════════════════ */
+
+body {
+  --font-text-theme:      var(--pollen-text-font);
+  --font-interface-theme: var(--pollen-interface-font);
+  --font-monospace-theme: var(--pollen-mono-font);
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   APPLY SURFACE VARIABLES (dark only)
+   ════════════════════════════════════════════════════════════ */
+
+.theme-dark {
+  --background-primary:           var(--pollen-bg);
+  --background-primary-alt:       var(--pollen-bg);
+  --background-secondary:         var(--pollen-bg);
+  --background-secondary-alt:     var(--pollen-bg);
+  --titlebar-background:          var(--pollen-bg);
+  --titlebar-background-focused:  var(--pollen-bg);
+  --tab-container-background:     var(--pollen-bg);
+  --tab-background-active:        var(--pollen-bg);
+  --ribbon-background:            var(--pollen-bg);
+  --ribbon-background-collapsed:  var(--pollen-bg);
+  --status-bar-background:        var(--pollen-bg);
+
+  --background-modifier-border:   rgba(255, 255, 255, var(--pollen-border-opacity));
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   APPLY GUIDE DASH/GAP VARIABLES
+   ════════════════════════════════════════════════════════════ */
+
+.nav-files-container .tree-item-children::before {
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--nav-indentation-guide-color, rgba(255, 255, 255, 0.067)) 0px,
+    var(--nav-indentation-guide-color, rgba(255, 255, 255, 0.067)) var(--pollen-guide-dash, 20px),
+    transparent var(--pollen-guide-dash, 20px),
+    transparent calc(var(--pollen-guide-dash, 20px) + var(--pollen-guide-gap, 10px))
+  ) !important;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   CLASS TOGGLE: Hide pinned tab square
+   ════════════════════════════════════════════════════════════ */
+
+body.pollen-hide-pin-square .workspace-tab-header-status-icon::after {
+  display: none !important;
+}
+
+body.pollen-hide-pin-square .workspace-tab-header-status-icon .lucide-pin {
+  display: inline !important;
+}
+
