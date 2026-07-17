@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ═══════════════════════════════════════════════════════════
  *   P O L L E N  —  Obsidian Community Theme  v1.0.0
  * ═══════════════════════════════════════════════════════════
@@ -785,8 +785,4 @@ strong, b {
 
 
 
-/* Micro-adjustment: Thicken document text by ~4% */
-.markdown-rendered,
-.cm-editor {
-  -webkit-text-stroke: 0.15px currentColor;
-}
+
